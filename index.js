@@ -148,12 +148,6 @@ app.post('/messages/send',validateToken,(req,res) =>{
 
 });
 
-
-
-app.listen(3000,() => {
-    console.log("Server in port 3000")
-})
-
 function generateAccessToken(user){
     return jwt.sign(user,process.env.SECRET,{expiresIn: '5m'})
 }
@@ -172,3 +166,9 @@ function validateToken(req,res,next){
         }
     })
 }
+
+app.listen(3000,() => {
+    console.log("Server in port 3000")
+})
+
+
