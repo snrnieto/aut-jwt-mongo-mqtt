@@ -109,7 +109,8 @@ app.post('/authorization',(req,res) =>{
 });
 
 
-
+// Elimina el token de autorización para el usuario solicitado
+// (cierra sesión).
 app.delete('/authorization',validateToken,(req,res) =>{
     const accestToken = req.headers['authorization'];
 
@@ -117,6 +118,9 @@ app.delete('/authorization',validateToken,(req,res) =>{
 });
 
 
+// Envía un mensaje por MQTT con la siguiente estructura
+// {“message”:[dato_curioso],”user”:[user_id]} al canal
+// MQTT lyatest/[código_prueba].
 
 app.post('/messages/send',validateToken,(req,res) =>{
     var client = mqtt.connect("mqtt://test.mosquitto.org");
