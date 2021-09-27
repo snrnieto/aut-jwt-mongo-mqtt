@@ -1,0 +1,142 @@
+Consulta:
+
+    POST /users HTTP/1.1
+    Host: localhost:3000
+    Content-Type: application/x-www-form-urlencoded
+    Content-Length: 12
+
+    name=Juanito
+
+Respuesta:
+
+    {
+        "name": "Juanito",
+        "active": false,
+        "_id": "61523d450620084256c7cdd4",
+        "__v": 0
+    }
+-------------------------------------------------------------------------------
+
+
+Consulta:
+
+    PUT /users/615238b0d36f164c7f1a7c4a HTTP/1.1
+    Host: localhost:3000
+    Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2MzI3NjgyNDB9.zm2thKQv_7ZEoOoAAYsXsbgCU0LYu3jXp7fm6K53W2A
+    Content-Type: application/x-www-form-urlencoded
+    Content-Length: 11
+
+    name=Pepito
+
+Respuesta:
+
+    {
+        "message": "User updated succesfully",
+        "id": "615238b0d36f164c7f1a7c4a"
+    }
+
+-------------------------------------------------------------------------------
+
+Consulta:
+
+    DELETE /users/615238b0d36f164c7f1a7c4a HTTP/1.1
+    Host: localhost:3000
+    Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2MzI3NjgyNDB9.zm2thKQv_7ZEoOoAAYsXsbgCU0LYu3jXp7fm6K53W2A
+
+
+Respuesta:
+
+    {
+        "message": "User deleted succesfully",
+        "id": "615238b0d36f164c7f1a7c4a"
+    }
+-------------------------------------------------------------------------------
+
+Consulta: 
+    PATCH /users/61523d450620084256c7cdd4 HTTP/1.1
+    Host: localhost:3000
+    Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2MzI3NjgyNDB9.zm2thKQv_7ZEoOoAAYsXsbgCU0LYu3jXp7fm6K53W2A
+
+Respuesta:
+
+    {
+        "message": "User active updated succesfully",
+        "id": "61523d450620084256c7cdd4",
+        "result": {
+            "acknowledged": true,
+            "modifiedCount": 1,
+            "upsertedId": null,
+            "upsertedCount": 0,
+            "matchedCount": 1
+        }
+    }
+
+
+-----------------------------------------------------------------------------
+
+Consulta:
+    GET /users/615238b0d36f164c7f1a7c4a HTTP/1.1
+    Host: localhost:3000
+    Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2MzI3NjgyNDB9.zm2thKQv_7ZEoOoAAYsXsbgCU0LYu3jXp7fm6K53W2A
+
+Respuesta:
+
+    {
+        "_id": "615238b0d36f164c7f1a7c4a",
+        "name": "Pepito",
+        "active": false,
+        "__v": 0
+    }
+
+
+
+
+-------------------------------------------------------------------------------
+
+Consulta: 
+
+POST /authorization?id=615238b0d36f164c7f1a7c4a HTTP/1.1
+Host: localhost:3000
+Content-Type: application/x-www-form-urlencoded
+Content-Length: 11
+
+name=Pepito HTTP/1.1
+Host: localhost:3000
+
+Respuesta:
+{
+    "message": "Authenticated user",
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyaWQiOnt9LCJpYXQiOjE2MzI3Nzk1MjJ9.YxLZmIl74DVggHOB-efn2TBv2z98_UFntKBfUJRTois"
+}
+
+-------------------------------------------------------------------------------
+
+Consulta:
+
+    DELETE /authorization?=null HTTP/1.1
+    Host: localhost:3000
+    Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyaWQiOiI2MTUyMzhiMGQzNmYxNjRjN2YxYTdjNGEiLCJpYXQiOjE2MzI3ODQwNzN9.wz776LFld5fanP1V66aGOAPa6oPPG-MhY0uBrpFB4eQ
+
+Respuesta:
+    {
+        "Token_deleted": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyaWQiOiI2MTUyMzhiMGQzNmYxNjRjN2YxYTdjNGEiLCJpYXQiOjE2MzI3ODQwNzN9.wz776LFld5fanP1V66aGOAPa6oPPG-MhY0uBrpFB4eQ"
+    }
+
+-------------------------------------------------------------------------------
+
+Consulta:
+    POST /messages/send HTTP/1.1
+    Host: localhost:3000
+    Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyaWQiOiI2MTUyMzhiMGQzNmYxNjRjN2YxYTdjNGEiLCJpYXQiOjE2MzI3ODQwNzN9.wz776LFld5fanP1V66aGOAPa6oPPG-MhY0uBrpFB4eQ
+
+Respuesta:
+
+    {
+        "title": "Message sent succesfully",
+        "message": {
+            "message": "sunt aut facere repellat provident occaecati excepturi optio reprehenderit",
+            "user": "615238b0d36f164c7f1a7c4a"
+        }
+    }
+
+-------------------------------------------------------------------------------
