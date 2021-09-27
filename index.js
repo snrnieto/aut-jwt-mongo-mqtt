@@ -135,7 +135,7 @@ app.post('/messages/send',validateToken,(req,res) =>{
         }else{
             const message = {message:JSON.parse(body).title,user:decodeUser.userid};
 
-            client.publish('yatest/1', message);
+            client.publish('lyatest/1', message);
     
             res.send({
                 title:"Message sent succesfully",
