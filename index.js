@@ -127,9 +127,13 @@ app.post('/messages/send',validateToken,(req,res) =>{
 
     const accessToken = req.headers['authorization'];
 
-    const decodeUser = jwt.decode(accessToken)
+    const decodeUser = jwt.decode(accessToken);
+    
+    const randomPost=randomNumber(1,100);
+    
+    const urlRequest='https://jsonplaceholder.typicode.com/posts/'+randomPost;
 
-    request('https://jsonplaceholder.typicode.com/posts/1', (error, response, body) => {
+    request(urlRequest, (error, response, body) => {
         if(error){
             res.send("An error happened")
         }else{
@@ -165,6 +169,12 @@ function validateToken(req,res,next){
             next()
         }
     })
+}
+
+function randomNumber(min, max) {  
+  return Math.floor(
+    Math.random() * (max - min) + min
+  )
 }
 
 app.listen(3000,() => {
